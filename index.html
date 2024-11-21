@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="main.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Inconsolata:wght@200..900&family=Nosifer&display=swap" rel="stylesheet">
+        <title>SamasZ</title>
+    </head>
+<body>
+    <header>
+        <div class="container">
+            <h1>SamasZ</h1>
+            <nav>
+                <ul>
+                    <a href="/">RECOMECE</a>
+                    <a>EXTRAS</a>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="game-section">
+        <div class="box">
+            <p id="game-text">
+                Você está no colégio, no horário de saída... Tudo parece fluir tranquilamente <strong>ATÉ QUE</strong> uma horda de criaturas lentas e loucas por vidas humanas surge e começa a atacar seus colegas!
+            </p>
+        </div>
+
+        <div class="buttons-container" id="choices-container">
+            <button class="btn" onclick="makeChoice(1)">CORRA PARA CASA</button>
+            <button class="btn" onclick="makeChoice(2)">VOLTE PARA ESCOLA</button>
+        </div>
+    </section>
+
+    <script>
+        function makeChoice(choice) {
+            let gameText = document.getElementById("game-text");
+            let choicesContainer = document.getElementById("choices-container");
+            choicesContainer.innerHTML = '';  
+            if (choice === 1) {
+                gameText.innerHTML = 'Você corre para casa, mas encontra uma barricada de zumbis. O que você faz?';
+                choicesContainer.innerHTML = `
+                    <button class="btn" onclick="makeChoice(3)">TENTAR ESCAPAR</button>
+                    <button class="btn" onclick="makeChoice(4)">ENFRENTAR OS ZUMBIS</button>
+                `;
+            } else if (choice === 2) {
+                gameText.innerHTML = 'Você volta para a escola e encontra o diretor tentando barricar a entrada. O que você faz?';
+                choicesContainer.innerHTML = `
+                    <button class="btn" onclick="makeChoice(5)">AJUDAR O DIRETOR</button>
+                    <button class="btn" onclick="makeChoice(6)">IGNORAR O DIRETOR</button>
+                `;
+            } else if (choice === 3) {
+                gameText.innerHTML = 'Você tenta escapar, mas os zumbis te pegam. Fim de jogo!';
+            } else if (choice === 4) {
+                gameText.innerHTML = 'Você enfrenta os zumbis e consegue sobreviver! Fim de jogo!';
+            } else if (choice === 5) {
+                gameText.innerHTML = 'Você ajuda o diretor a barricar a entrada e salva a escola! Fim de jogo!';
+            } else if (choice === 6) {
+                gameText.innerHTML = 'Você ignora o diretor e entra na escola, mas é cercado por zumbis! Fim de jogo!';
+            }
+        }
+    </script>
+</body>
+</html>
